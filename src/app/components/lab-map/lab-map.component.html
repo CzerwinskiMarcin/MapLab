@@ -1,8 +1,17 @@
-<div
+<!-- This section and inner div was created only due to need of putting the author of the map marker icon. Thanks to him for sharing his work!-->
+<section
+  class="container"
   *ngIf="mapOptions"
-  leaflet
-  class="map"
-  [leafletOptions]="mapOptions"
-  [leafletFitBounds]="fitBounds"
+>
+  <div>Map marker icon made by <a href="https://www.flaticon.com/authors/pod-gladiator" title="POD Gladiator">POD Gladiator</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+  <div
+    leaflet
+    class="map"
+    [leafletOptions]="mapOptions"
+    [leafletFitBounds]="fitBounds"
   >
-</div>
+  </div>
+</section>
+
+

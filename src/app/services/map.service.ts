@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MapOptions, Layer, TileLayer, TileLayerOptions, LatLng, Marker, LatLngBounds } from 'leaflet';
+import { MapOptions, Layer, TileLayer, TileLayerOptions, LatLng, Marker, LatLngBounds, Icon, IconOptions, DivIcon } from 'leaflet';
 import { GeoData, Laboratory, LaboratoryMapData } from '../../core/interfaces/laboratory.interface';
 
 @Injectable({
@@ -37,14 +37,13 @@ export class MapService {
   private getMarkerLayer(laboratories: Laboratory[]): Layer[] {
     return laboratories.map(laboratory => {
       const latLng: LatLng = new LatLng(laboratory.coordination.lat, laboratory.coordination.lng);
-      const marker = new Marker(latLng);
+      const marker = new Marker(latLng, {icon: new Icon({iconUrl: 'assets/icons/map.png'})});
 
       marker.bindPopup(this.getMarkerPopup(laboratory));
 
       return marker;
     });
   }
-
   private getMarkerPopup(laboratory: Laboratory): string {
     const {name, location, address, zipCode, info, telephone} = laboratory;
     return `
