@@ -1,3 +1,4 @@
 export const environment = {
-  production: false
+  production: false,
+  labsApi: 'https://dev2.badamygeny.pl/api/laboratoria/inne'
 };
