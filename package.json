@@ -2,7 +2,7 @@
   "name": "labs-map",
   "version": "0.1.0",
   "scripts": {
-    "start": "ng serve",
+    "start": "ng serve"
   },
   "private": true,
   "dependencies": {
