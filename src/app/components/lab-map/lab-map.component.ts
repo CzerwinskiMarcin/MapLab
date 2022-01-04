@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MapOptions } from 'leaflet';
+import { LatLngBounds, MapOptions } from 'leaflet';
 
 @Component({
   selector: 'app-lab-map',
@@ -9,4 +9,5 @@ import { MapOptions } from 'leaflet';
 })
 export class LabMapComponent {
   @Input() mapOptions: MapOptions;
+  @Input() fitBounds: LatLngBounds;
 }

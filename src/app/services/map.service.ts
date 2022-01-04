@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MapOptions, Layer, TileLayer, TileLayerOptions, LatLng, latLngBounds, Marker, LatLngBounds } from 'leaflet';
+import { MapOptions, Layer, TileLayer, TileLayerOptions, LatLng, Marker, LatLngBounds } from 'leaflet';
 import { GeoData, Laboratory, LaboratoryMapData } from '../../core/interfaces/laboratory.interface';
-import { min } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +8,17 @@ import { min } from 'rxjs/operators';
 export class MapService {
 
   getMapOptions({laboratories, geoData}: LaboratoryMapData): MapOptions {
-    const {zoom, center, minCoord, maxCoord} = geoData;
+    const {zoom, center} = geoData;
     return {
       zoom,
       layers: this.getLayers(laboratories),
       center: new LatLng(center.lat, center.lng)
-      // maxBounds: new LatLngBounds(new LatLng(minCoord.lat, minCoord.lng), new LatLng(maxCoord.lat, maxCoord.lng))
     } as MapOptions;
+  }
+
+  getBounds(geoData: GeoData): LatLngBounds {
+    const {minCoord, maxCoord} = geoData;
+    return new LatLngBounds(new LatLng(maxCoord.lat, maxCoord.lng), new LatLng(minCoord.lat, minCoord.lng));
   }
 
   private getLayers(laboratories: Laboratory[]): Layer[] {
@@ -49,6 +52,7 @@ export class MapService {
       <h4>${name}</h4>
       <address>ul. ${address}<br>${zipCode} ${location}</address>
       Tel: <a href="tel:${telephone}">${telephone}</a>
+      ${info ? '<p>Informacje: ' + info + '</p>' : ''}
       </div>
     `;
   }

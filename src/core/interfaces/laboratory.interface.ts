@@ -22,6 +22,7 @@ export interface Coordination {
 export interface GeoData {
   minCoord: Coordination;
   maxCoord: Coordination;
+  avgCoord: Coordination;
   center: Coordination;
   zoom: number;
 }
