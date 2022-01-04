@@ -1,0 +1,13 @@
+<section class="container">
+  <article class="input-section">
+    <input
+      type="text"
+      autofocus
+      [disabled]="disabled"
+      #input/>
+    <span *ngIf="error" class="error-message">{{error}}</span>
+  </article>
+  <button
+    [disabled]="disabled"
+    (click)="link.emit(input.value)">{{ disabled ? 'Proszę czekać...' : 'Pobierz'}}</button>
+</section>
